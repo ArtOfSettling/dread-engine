@@ -1,0 +1,1 @@
+pub(crate) const APPLICATION_TITLE: &str = "Dread Engine";
