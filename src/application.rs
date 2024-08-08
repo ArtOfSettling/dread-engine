@@ -4,14 +4,23 @@ pub use crate::application::definition::Definition;
 use crate::window;
 pub use crate::window::Window;
 
+#[derive(Debug)]
 pub struct Application {
-    pub application_definition: Definition
+    application_definition: Definition
 }
 
 impl Application {
+    pub fn new(application_definition: Definition) -> Self {
+        Application {
+            application_definition
+        }
+    }
+
     pub fn run(&self) {
-        Window {
-            definition: window::Definition::build(self.application_definition.title.clone())
-        }.run();
+        let window = Window {
+            definition: window::Definition::build(self.application_definition.title.clone(), self.application_definition.width, self.application_definition.height)
+        };
+
+        window.run()
     }
 }

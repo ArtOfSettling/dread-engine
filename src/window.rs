@@ -2,7 +2,9 @@ mod definition;
 
 pub use crate::window::definition::Definition;
 use glfw::{Action, Context, Key};
+use tracing::info;
 
+#[derive(Debug)]
 pub struct Window {
     pub definition: Definition
 }
@@ -27,7 +29,7 @@ impl Window {
 
             glfw.poll_events();
             for (_, event) in glfw::flush_messages(&events) {
-                println!("{:?}", event);
+                info!("{:?}", event);
                 match event {
                     glfw::WindowEvent::Key(Key::Escape, _, Action::Press, _) => {
                         window.set_should_close(true)

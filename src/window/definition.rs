@@ -1,27 +1,12 @@
-use std::string::ToString;
-use crate::constants;
-
+#[derive(Debug)]
 pub struct Definition {
     pub title: String,
     pub width: u32,
     pub height: u32
 }
 
-impl Default for Definition {
-    fn default() -> Self {
-        Definition {
-            title: constants::window::WINDOW_TITLE.to_string(),
-            width: constants::window::WINDOW_WIDTH,
-            height: constants::window::WINDOW_HEIGHT
-        }
-    }
-}
-
 impl Definition {
-    pub(crate) fn build(title: String) -> Self {
-        Definition {
-            title,
-            ..Definition::default()
-        }
+    pub(crate) fn build(title: String, width: u32, height: u32) -> Self {
+        Definition { title, width, height }
     }
 }
